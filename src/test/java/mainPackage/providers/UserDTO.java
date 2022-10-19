@@ -1,5 +1,10 @@
 package mainPackage.providers;
 
+import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+
+@Data
+@JsonIgnoreProperties
 public class UserDTO {
     private Long id;
     private String name;
@@ -11,31 +16,5 @@ public class UserDTO {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
     }
 }
