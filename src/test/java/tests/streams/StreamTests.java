@@ -5,6 +5,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import mainPackage.config.BaseTest;
 import mainPackage.providers.UserDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -172,15 +173,49 @@ public class StreamTests extends BaseTest {
     }
 
     @Test
+    @Order(11)
+    @Feature("Stream API: Conversions")
+    @DisplayName("Create users Map and convert it to Set")
+    @Description("Create users Map out of UserDTO, convert it to Set as Keys and Values, print them and assert")
     void mapToSetTest()
     {
+        Map<Long, UserDTO> users = new HashMap<>();
+        users.put(1L, new UserDTO(1L, "Bob", "Taylor", 30));
+        users.put(2L, new UserDTO(2L, "Tom", "Richard", 32));
+        users.put(3L, new UserDTO(3L, "Bob", "Wills", 31));
+        users.put(4L, new UserDTO(4L, "Nick", "Jackson", 29));
+        users.put(5L, new UserDTO(6L, "Tom", "Taylor", 30));
+        users.put(6L, new UserDTO(2L, "Tom", "Richard", 32));
+        users.put(7L, new UserDTO(7L, "Bob", "Mills", 29));
 
+        //Convert Map keys to Set and assert
+        Set<Long> keySet= users.keySet().stream().collect(Collectors.toSet());
+        keySet.forEach(System.out::println);
+
+        Assertions.assertTrue(keySet.containsAll(users.keySet()));
+
+        //Convert Map values to Set and assert
+        Set<UserDTO> valueSet= users.values().stream().collect(Collectors.toSet());
+        valueSet.forEach(System.out::println);
+
+        Assertions.assertTrue(valueSet.containsAll(users.values()));
     }
 
     @Test
+    @Order(12)
+    @Feature("Stream API: Conversions")
+    @DisplayName("Create names List and convert it to Set")
+    @Description("Create names List, convert it to Set, print them and assert")
     void listToSetTest()
     {
+        List<String> namesList = Arrays.asList("john", "doe", "doe", "tom");
+        Set<String> namesSet = namesList.stream().collect(Collectors.toSet());
+        System.out.println(namesSet);
 
+        for (String singleString : namesList)
+        {
+            Assertions.assertTrue(namesSet.contains(singleString));
+        }
     }
 
 
