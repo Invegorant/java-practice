@@ -92,13 +92,13 @@ public class StreamTests extends BaseTest {
 
     @Test
     @Order(7)
-    @Description("Square each element of the sprint, find average and print it")
+    @Description("Square each element of the stream, find average and print it")
     void streamFromArrayAverageOfSquaresTest()
     {
         // 6. Average of squares of an int array
         Arrays.stream(new int[] {2, 4, 6, 8, 10})
-                .map(x -> x * x) // ????
-                .average() // ????
+                .map(x -> x * x) // square each int
+                .average() // return average value
                 .ifPresent(System.out::println);
     }
 
@@ -111,8 +111,8 @@ public class StreamTests extends BaseTest {
         List<String> people = Arrays.asList("Egor", "Kristina", "Sonya", "Sergey", "Maxim", "Alexey");
         people
                 .stream()
-                .map(String::toLowerCase)
                 .filter(x -> x.startsWith("S"))
+                .map(String::toLowerCase)
                 .forEach(System.out::println);
     }
 
