@@ -14,13 +14,14 @@ public class BaseTest {
     void beforeEachTest(TestInfo testInfo)
     {
         description = testInfoUtils.getCurrentTestMethodDescription(testInfo);
-        System.out.println("###### " + testInfo.getDisplayName() + " ######");
+        System.out.println("\n###############################################################");
+        System.out.println("Test Name: " + testInfo.getDisplayName());
         System.out.println("Test Description: " + description + "\n");
     }
 
     @AfterEach
-    void afterEachTest(TestInfo testInfo)
+    void afterEachTest()
     {
-        System.out.println("\n###### " + testInfo.getDisplayName() + " ######\n");
+        System.out.println("\n###############################################################");
     }
 }
