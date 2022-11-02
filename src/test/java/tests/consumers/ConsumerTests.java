@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.IntConsumer;
 import java.util.stream.Stream;
 
 public class ConsumerTests extends BaseTest {
@@ -31,6 +32,14 @@ public class ConsumerTests extends BaseTest {
         Consumer<List<String>> printConsumer = list -> list.stream().forEach(System.out::println);
         upperCaseConsumer
                 .andThen(printConsumer).accept(cities);
+    }
+
+    @Test
+    @Description("IntConsummer print test")
+    void intConsumerTest () {
+        int x = 635;
+        IntConsumer printConsumer = t -> System.out.println(t)  ;
+        printConsumer.accept(x);
     }
 
 }
