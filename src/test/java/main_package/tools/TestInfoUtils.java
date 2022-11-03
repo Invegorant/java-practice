@@ -1,4 +1,4 @@
-package mainPackage.tools;
+package main_package.tools;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
