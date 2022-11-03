@@ -2,6 +2,7 @@ package tests.suppliers;
 
 import io.qameta.allure.Description;
 import mainPackage.config.BaseTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -46,9 +47,13 @@ public class SupplierTests extends BaseTest {
     @Test
     @Description("Supplier to uppercase test")
     void supplierToUpperCaseTest () {
+        String expectedString = "ONE";
         String t = "One";
         Supplier<String> supplierString = () -> t.toUpperCase();
+        String bigT = supplierString.get();
         System.out.println(supplierString.get());
+        Assertions.assertFalse(t.contentEquals(expectedString));
+        Assertions.assertTrue(bigT.contentEquals(expectedString));
     }
 
 }
