@@ -1,7 +1,7 @@
-package tests.consumers;
+package tests.functional_interfaces.consumers;
 
 import io.qameta.allure.Description;
-import mainPackage.config.BaseTest;
+import main_package.config.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

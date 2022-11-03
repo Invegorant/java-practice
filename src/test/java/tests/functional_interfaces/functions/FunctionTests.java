@@ -1,7 +1,7 @@
-package tests.functions;
+package tests.functional_interfaces.functions;
 
 import io.qameta.allure.Description;
-import mainPackage.config.BaseTest;
+import main_package.config.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

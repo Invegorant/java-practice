@@ -1,6 +1,6 @@
-package mainPackage.config;
+package main_package.config;
 
-import mainPackage.tools.TestInfoUtils;
+import main_package.tools.TestInfoUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;

@@ -1,4 +1,4 @@
-package mainPackage.providers;
+package main_package.providers;
 
 import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
