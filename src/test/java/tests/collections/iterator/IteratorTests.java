@@ -7,23 +7,20 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
 
 public class IteratorTests extends BaseTest {
 
-    private static ArrayList<String> states;
+    private ArrayList<String> states = new ArrayList<>(Arrays.asList("Germany", "France", "Italy", "Spain"));
+    private ArrayList<Integer> numbers;
     private final Consumer<ArrayList<String>> printStates = System.out::println;
+    private final Consumer printT = System.out::println;
 
     @BeforeAll
     static void beforeAll() {
-        states = new ArrayList<>();
-        states.add("Germany");
-        states.add("France");
-        states.add("Italy");
-        states.add("Spain");
+
     }
 
     @Test
@@ -85,5 +82,30 @@ public class IteratorTests extends BaseTest {
         printStates.accept(states);
         Assertions.assertFalse(states.contains("Italy"));
         Assertions.assertEquals(3, states.size());
+    }
+
+    @Test
+    @Description("Print every element from ArrayList using consumer without defined type and set MAP with Iterator")
+    void consumerWithoutDefinedTypeAndSetMapWithIteratorTest () {
+        numbers = new ArrayList<>();
+        for (int i = 0; i<10; i ++) {
+            numbers.add(i, ThreadLocalRandom.current().nextInt(0, 6547831));
+        }
+        printT.accept(numbers);
+        numbers.forEach(printT);
+        ListIterator<Integer> listIterator = numbers.listIterator();
+        Map<Integer, Integer> numbersMap = new HashMap<>();
+        while (listIterator.hasNext()){
+            int index = listIterator.nextIndex();
+            int value = listIterator.next();
+            if (index !=3) {
+                numbersMap.put(index, value);
+            }
+        }
+        printT.accept(numbersMap);
+        Assertions.assertTrue(numbersMap.size() < numbers.size());
+        Assertions.assertTrue(
+                !numbersMap.containsKey(3)
+        );
     }
 }
