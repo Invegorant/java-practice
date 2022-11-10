@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -216,6 +217,22 @@ public class StreamTests extends BaseTest {
         {
             Assertions.assertTrue(namesSet.contains(singleString));
         }
+    }
+
+    @Test
+    @Description("task fizz buzz for interview")
+    void fizzBazzTest () {
+        IntStream.rangeClosed(0,150).mapToObj(u -> u%3==0  ?  (u%5==0 ? "fizzbuzz" : "fizz") : (u%5==0 ? "buzz" : u))
+                .forEach(System.out::println);
+    }
+
+    @Test
+    @Description("task fizz buzz with predicate for interview")
+    void fizzBazzPredicateTest () {
+        Predicate<Integer> multipleOf3 = x->x%3==0;
+        Predicate<Integer> multipleOf5 = x->x%5==0;
+        IntStream.rangeClosed(0,150).mapToObj(u -> multipleOf3.test(u)  ?  (multipleOf5.test(u) ? "fizzbuzz" : "fizz") : (multipleOf5.test(u) ? "buzz" : u))
+                .forEach(System.out::println);
     }
 
 

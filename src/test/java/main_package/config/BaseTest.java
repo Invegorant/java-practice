@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 
-public class BaseTest {
+public abstract class BaseTest {
 
     private final TestInfoUtils testInfoUtils = new TestInfoUtils();
     String description;
@@ -24,4 +24,5 @@ public class BaseTest {
     {
         System.out.println("\n###############################################################");
     }
+
 }
