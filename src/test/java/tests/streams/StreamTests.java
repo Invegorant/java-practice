@@ -5,10 +5,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import main_package.config.BaseTest;
 import main_package.providers.UserDTO;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.*;
 import java.util.function.Function;
@@ -218,23 +215,6 @@ public class StreamTests extends BaseTest {
             Assertions.assertTrue(namesSet.contains(singleString));
         }
     }
-
-    @Test
-    @Description("task fizz buzz for interview")
-    void fizzBazzTest () {
-        IntStream.rangeClosed(0,150).mapToObj(u -> u%3==0  ?  (u%5==0 ? "fizzbuzz" : "fizz") : (u%5==0 ? "buzz" : u))
-                .forEach(System.out::println);
-    }
-
-    @Test
-    @Description("task fizz buzz with predicate for interview")
-    void fizzBazzPredicateTest () {
-        Predicate<Integer> multipleOf3 = x->x%3==0;
-        Predicate<Integer> multipleOf5 = x->x%5==0;
-        IntStream.rangeClosed(0,150).mapToObj(u -> multipleOf3.test(u)  ?  (multipleOf5.test(u) ? "fizzbuzz" : "fizz") : (multipleOf5.test(u) ? "buzz" : u))
-                .forEach(System.out::println);
-    }
-
 
 
     @Step
