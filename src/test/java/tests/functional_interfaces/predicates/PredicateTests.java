@@ -32,5 +32,5 @@ public class PredicateTests extends BaseTest {
             Assertions.assertTrue(isPositive.test(listIterator.next()));
         }
     }
-
+    
 }

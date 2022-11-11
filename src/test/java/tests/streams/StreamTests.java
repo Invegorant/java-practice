@@ -5,13 +5,11 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import main_package.config.BaseTest;
 import main_package.providers.UserDTO;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -217,7 +215,6 @@ public class StreamTests extends BaseTest {
             Assertions.assertTrue(namesSet.contains(singleString));
         }
     }
-
 
 
     @Step
