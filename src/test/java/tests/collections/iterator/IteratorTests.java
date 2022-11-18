@@ -1,15 +1,19 @@
 package tests.collections.iterator;
 
+import io.github.artsok.RepeatedIfExceptionsTest;
 import io.qameta.allure.Description;
 import main_package.config.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.RetryingTest;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class IteratorTests extends BaseTest {
 
@@ -35,6 +39,8 @@ public class IteratorTests extends BaseTest {
     }
 
     @Test
+   // @RepeatedIfExceptionsTest(repeats = 4)
+    @RetryingTest(value = 3)
     @Order(2)
     @Description("Print every element from ArrayList using Iterator, change last value and print every value in vice-versa order")
     void simpleListIteratorTest() {
