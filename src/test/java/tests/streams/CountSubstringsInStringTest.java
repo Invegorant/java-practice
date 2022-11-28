@@ -12,9 +12,12 @@ public class CountSubstringsInStringTest extends BaseTest {
 
     @Test
     void countStringTest() {
-        int count = counterStringInString("aaewrsdfrewrte;lewrkjasdfewr", "ewr");
+        int count = counterStringInString("aaewrsdfrewrte;lewrkjasdfewrsfsdf", "ewr");
         System.out.println(count);
+        System.out.println(stringCounterBySplit("aaewrsdfrewrte;lewrkjasdfewrsfsdf", "ewr"));
+        int stringCounter = stringCounterBySplit("aaewrsdfrewrte;lewrkjasdfewrsfsdf", "ewr");
         Assertions.assertTrue(count == 4);
+        Assertions.assertTrue(stringCounter == 4);
     }
 
     @Step
@@ -38,6 +41,16 @@ public class CountSubstringsInStringTest extends BaseTest {
 
         }
         return countEqual;
+    }
+
+    int stringCounterBySplit(String first, String second) {
+        String[] s = first.split(second);
+        int summ = 0;
+        for (int i = 0; i < s.length; i ++) {
+            summ += s[i].length();
+        }
+        int value = (first.length() - summ) / second.length();
+        return value;
     }
 }
 
